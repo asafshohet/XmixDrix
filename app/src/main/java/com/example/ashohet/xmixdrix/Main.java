@@ -17,7 +17,7 @@ import java.util.*;
 public class Main extends Activity {
 
     //All Instances
-    Map <Integer, String> myMap = new HashMap<Integer, String>();
+    Map <Integer, String> myMap = new HashMap<Integer, String>(); //Corrleates user ID and User name
     String user1;
     String user2;
     Random rand = new Random();
@@ -137,6 +137,8 @@ public class Main extends Activity {
         }
         else {
             turnText.setText(myMap.get(currentTurn) +  ", You won!");
+            for (int a = 0 ; a<9 ; a++)
+                spinners[a].setEnabled(false);
         }
     }
 
