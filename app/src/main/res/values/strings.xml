@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">XmixDrix</string>
+    <string name="participant1">Participant1: </string>
+    <string name="participant2">Participant2: </string>
+    <string name="startPlay">Start Playing!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="turns">, your turn!</string>
+
+    <string-array name="XO">
+        <item> </item>
+        <item>X</item>
+        <item>O</item>
+    </string-array>
+
+</resources>
