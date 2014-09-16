@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:text="@string/startPlay"
         android:id="@+id/startPlayButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp" />
 
     <TextView
         android:layout_width="wrap_content"

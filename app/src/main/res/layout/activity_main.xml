@@ -20,9 +20,9 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner1"
-        android:layout_alignBottom="@+id/spinner2"
-        android:layout_toLeftOf="@+id/spinner2"
+        android:id="@+id/spinner0"
+        android:layout_alignBottom="@+id/spinner1"
+        android:layout_toLeftOf="@+id/spinner1"
         android:layout_alignParentLeft="false"
         android:layout_alignParentStart="false"
         android:layout_marginRight="240dp"
@@ -32,7 +32,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner1"
         android:layout_marginTop="70dp"
         android:layout_below="@+id/turnText"
         android:layout_centerHorizontal="true"
@@ -45,8 +45,8 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner3"
-        android:layout_alignBottom="@+id/spinner2"
+        android:id="@+id/spinner2"
+        android:layout_alignBottom="@+id/spinner1"
         android:layout_alignParentLeft="false"
         android:layout_alignParentStart="false"
         android:layout_marginRight="00dp"
@@ -56,8 +56,22 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/spinner3"
+        android:layout_alignTop="@+id/spinner4"
+        android:layout_alignLeft="@+id/spinner0"
+        android:layout_alignStart="@+id/spinner0"
+        android:layout_alignRight="@+id/spinner0"
+        android:layout_alignEnd="@+id/spinner0" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/spinner4"
-        android:layout_alignTop="@+id/spinner5"
+        android:layout_toEndOf="@+id/spinner3"
+        android:layout_toRightOf="@+id/spinner3"
+        android:layout_toStartOf="@+id/spinner1"
+        android:layout_toLeftOf="@+id/spinner1"
+        android:layout_below="@+id/spinner1"
         android:layout_alignLeft="@+id/spinner1"
         android:layout_alignStart="@+id/spinner1"
         android:layout_alignRight="@+id/spinner1"
@@ -67,11 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner5"
-        android:layout_toEndOf="@+id/spinner4"
-        android:layout_toRightOf="@+id/spinner4"
-        android:layout_toStartOf="@+id/spinner2"
-        android:layout_toLeftOf="@+id/spinner2"
-        android:layout_below="@+id/spinner2"
+        android:layout_alignBottom="@+id/spinner4"
         android:layout_alignLeft="@+id/spinner2"
         android:layout_alignStart="@+id/spinner2"
         android:layout_alignRight="@+id/spinner2"
@@ -81,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner6"
-        android:layout_alignBottom="@+id/spinner5"
+        android:layout_below="@+id/spinner3"
         android:layout_alignLeft="@+id/spinner3"
         android:layout_alignStart="@+id/spinner3"
         android:layout_alignRight="@+id/spinner3"
@@ -91,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner7"
-        android:layout_below="@+id/spinner4"
+        android:layout_alignBottom="@+id/spinner6"
         android:layout_alignLeft="@+id/spinner4"
         android:layout_alignStart="@+id/spinner4"
         android:layout_alignRight="@+id/spinner4"
@@ -103,18 +113,17 @@
         android:id="@+id/spinner8"
         android:layout_alignBottom="@+id/spinner7"
         android:layout_alignLeft="@+id/spinner5"
-        android:layout_alignStart="@+id/spinner5"
         android:layout_alignRight="@+id/spinner5"
-        android:layout_alignEnd="@+id/spinner5" />
+        android:layout_alignStart="@+id/spinner5" />
 
-    <Spinner
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner9"
-        android:layout_alignBottom="@+id/spinner8"
-        android:layout_alignLeft="@+id/spinner6"
-        android:layout_alignRight="@+id/spinner6"
-        android:layout_alignStart="@+id/spinner6" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/wrongSelectTextView"
+        android:layout_below="@+id/spinner6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp" />
 
 
 </RelativeLayout>

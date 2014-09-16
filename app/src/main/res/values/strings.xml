@@ -2,12 +2,14 @@
 <resources>
 
     <string name="app_name">XmixDrix</string>
-    <string name="participant1">Participant1: </string>
-    <string name="participant2">Participant2: </string>
+    <string name="participant1">Participant1 (X): </string>
+    <string name="participant2">Participant2 (O): </string>
     <string name="startPlay">Start Playing!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="turns">, your turn!</string>
+    <string name="selectX">Please select "X"...</string>
+    <string name="selectO">Please select "O"...</string>
 
     <string-array name="XO">
         <item> </item>
