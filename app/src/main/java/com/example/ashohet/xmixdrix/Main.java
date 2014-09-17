@@ -2,6 +2,7 @@ package com.example.ashohet.xmixdrix;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +18,7 @@ import java.util.*;
 public class Main extends Activity {
 
     //All Instances
-    Map <Integer, String> myMap = new HashMap<Integer, String>(); //Corrleates user ID and User name
+    Map<Integer, String> myMap = new HashMap<Integer, String>(); //Corrleates user ID and User name
     String user1;
     String user2;
     Random rand = new Random();
@@ -26,6 +27,7 @@ public class Main extends Activity {
     ArrayAdapter<CharSequence> adapter;
     int currentTurn;
     TextView wrongSelectTextView;
+    int turnsMade = 0;
 
 
     //Constructor
@@ -40,13 +42,12 @@ public class Main extends Activity {
         //Decides who starts first
         currentTurn = rand.nextInt(2);
         setTurnTextView();
-        wrongSelectTextView.setText("");
 
     }
 
-    private void init(){
+    private void init() {
 
-        wrongSelectTextView = (TextView)findViewById(R.id.wrongSelectTextView);
+        wrongSelectTextView = (TextView) findViewById(R.id.wrongSelectTextView);
 
         spinners = new Spinner[9];
         spinners[0] = (Spinner) findViewById(R.id.spinner0);
@@ -64,14 +65,17 @@ public class Main extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        for (int a = 0; a <9  ; a++) {
+        for (int a = 0; a < 9; a++) {
             spinners[a].setAdapter(adapter);
             spinners[a].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     TextView textView = (TextView) view;
                     String selectedChar = textView.getText().toString();
+
                     if (validSelection(selectedChar)) {
+
+                        changeTextColor(textView, selectedChar);
                         disableActiveSpinners();
                         newTurn(selectedChar);
                         textView.setEnabled(false);
@@ -95,46 +99,60 @@ public class Main extends Activity {
         myMap.put(new Integer(1), user2);
 
 
-        turnText = (TextView)findViewById(R.id.turnText);
+        turnText = (TextView) findViewById(R.id.turnText);
     }
 
-    private void setTurnTextView(){
+    private void setTurnTextView() {
         turnText.setText(myMap.get(currentTurn) + getString(R.string.turns));
     }
 
     //Check if the user selected his character.
-    private boolean validSelection(String selectedChar){
+    private boolean validSelection(String selectedChar) {
         //If it is the X turn
-        if (currentTurn==0) {
-            if (selectedChar.hashCode() == "X".hashCode()){
+        if (currentTurn == 0) {
+            if (selectedChar.hashCode() == "X".hashCode()) {
                 wrongSelectTextView.setText("");
                 return true;
             }
+            //Else - if it is the wrong char
             wrongSelectTextView.setText(getString(R.string.selectX));
         }
 
         //If it is the Y turn
-        else if (currentTurn==1){
+        else if (currentTurn == 1) {
             if (selectedChar.hashCode() == "O".hashCode()) {
                 wrongSelectTextView.setText("");
                 return true;
             }
+            //Else - if it is the wrong char
             wrongSelectTextView.setText(getString(R.string.selectO));
         }
         return false;
 
     }
 
-    // After selection - skip to next turn, unless there's a match
-    private void newTurn(String selectedChar){
-        if (! (matchFound(selectedChar))) {
-            if (currentTurn==0)
-                currentTurn=1;
-            else
-                currentTurn=0;
+    //Change Text color according to selection
+    private void changeTextColor(TextView selectedTextBox, String selectedChar)    {
+        if (selectedChar.hashCode() == "X".hashCode())
+            selectedTextBox.setTextColor(Color.RED);
+        else
+            selectedTextBox.setTextColor(Color.GREEN);
+    }
 
-            setTurnTextView();
-        }
+    // After selection - skip to next turn, unless there's a match or a draw.
+    private void newTurn(String selectedChar){
+        turnsMade++;
+        if (! (matchFound(selectedChar)))
+            if ( turnsMade<9) {
+                if (currentTurn == 0)
+                    currentTurn = 1;
+                else
+                    currentTurn = 0;
+                setTurnTextView();
+            }
+            else
+                turnText.setText("Oh, it is a draw!");
+
         else {
             turnText.setText(myMap.get(currentTurn) +  ", You won!");
             for (int a = 0 ; a<9 ; a++)
